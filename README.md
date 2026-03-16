@@ -48,8 +48,13 @@ You may find my template useful (in French):
 
 </details>
 
-
 </details>
+
+I made this weekend project to prepare a Halloween theme escape game with friends. My use was to put the phone inside a wooden arrow in compass mode, and have one team send messages to the second team in another room. Although the second team did not know their own teammates were sending the message !
+
+<p align="center">
+    <img src="media/ouija_compass_arrow.gif" alt="Fully integrated in arrow" width="50%" height="auto">
+</p>
 
 ## The spirits' language
 
