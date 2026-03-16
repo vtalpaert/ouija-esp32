@@ -27,7 +27,7 @@ Flash an ESP32 with a web server code, allowing the spirits to communicate throu
 </p>
 
 <details>
-<summary>Suggestions</summary>
+<summary>Click here for build suggestions</summary>
 
 I will only provide suggestions, as creating your board is up to your imagination !
 
@@ -39,7 +39,7 @@ You may find my template useful (in French):
 </p>
 
 <details>
-<summary>Spoiler on how it looks inside !</summary>
+<summary>Click here for spoiler on how it looks inside !</summary>
 
 <p align="center">
 <img src="media/ouija_inside.jpeg" alt="Inside" width="50%" height="auto">
