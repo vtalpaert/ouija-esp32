@@ -1,4 +1,0 @@
-flask-socketio
-Flask-APScheduler
-gevent-websocket
-numpy
