@@ -7,6 +7,10 @@ Flash an ESP32 with a web server code, allowing the spirits to communicate throu
 - **Compass mode:** open the compass webpage from your phone and the planchette mirrors your phone's orientation in real time
 - **Text mode:** send text to the ESP32 and the Ouija board spells it out, letter by letter. Integrate it in your smart home: "Hey Google, ask the spirits if they are here" and the board gravely spells YES
 
+## Make your board
+
+![Example ouija board (french)](ouija_board_example_fr.png)
+
 ## Flashing the ESP32
 
 1. Open `OuijaBoard/OuijaBoard.ino` in Arduino IDE 2

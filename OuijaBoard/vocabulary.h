@@ -28,6 +28,9 @@ static const Token VOCABULARY[] = {
     // Multi-character tokens (longest first)
     //{"YES",  ???},
     //{"NO",   ???},
+    // Space: pause only, no movement
+    {"%20",  -1},
+    {" ",    -1},
     // Single letters A-Z (A=2160, Z=544, evenly spaced ~65 us/step)
     {"A",  2170}, // <-- anchor
     {"B",  2101},
@@ -55,8 +58,6 @@ static const Token VOCABULARY[] = {
     {"X",   627},
     {"Y",   578},
     {"Z",   530}, // <-- anchor
-    // Space: pause only, no movement
-    {" ",      -1},
 };
 
 static const int VOCAB_SIZE = sizeof(VOCABULARY) / sizeof(VOCABULARY[0]);
