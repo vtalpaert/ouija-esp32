@@ -19,6 +19,7 @@
 #define DEFAULT_COMPASS_END    180.0f
 #define DEFAULT_LETTER_PAUSE   800
 #define DEFAULT_SPACE_PAUSE    1000
+#define DEFAULT_IDLE_TIMEOUT_S 10
 
 // ---------------------------------------------------------------------------
 
@@ -32,12 +33,13 @@ ServoConfig       cfg;
 
 void loadConfig() {
     prefs.begin("ouija", true);
-    cfg.speed         = prefs.getFloat("speed",        DEFAULT_SPEED);
-    cfg.threshold     = prefs.getInt("threshold",      DEFAULT_THRESHOLD);
-    cfg.compassStart  = prefs.getFloat("compassStart", DEFAULT_COMPASS_START);
-    cfg.compassEnd    = prefs.getFloat("compassEnd",   DEFAULT_COMPASS_END);
-    cfg.letterPauseMs = prefs.getInt("letterPause",    DEFAULT_LETTER_PAUSE);
-    cfg.spacePauseMs  = prefs.getInt("spacePause",     DEFAULT_SPACE_PAUSE);
+    cfg.speed           = prefs.getFloat("speed",        DEFAULT_SPEED);
+    cfg.threshold       = prefs.getInt("threshold",      DEFAULT_THRESHOLD);
+    cfg.compassStart    = prefs.getFloat("compassStart", DEFAULT_COMPASS_START);
+    cfg.compassEnd      = prefs.getFloat("compassEnd",   DEFAULT_COMPASS_END);
+    cfg.letterPauseMs   = prefs.getInt("letterPause",    DEFAULT_LETTER_PAUSE);
+    cfg.spacePauseMs    = prefs.getInt("spacePause",     DEFAULT_SPACE_PAUSE);
+    cfg.idleTimeoutMs   = (unsigned long)prefs.getInt("idleTimeout", DEFAULT_IDLE_TIMEOUT_S) * 1000UL;
     prefs.end();
 }
 
@@ -49,6 +51,7 @@ void saveConfig(const ServoConfig& c) {
     prefs.putFloat("compassEnd",   c.compassEnd);
     prefs.putInt("letterPause",    c.letterPauseMs);
     prefs.putInt("spacePause",     c.spacePauseMs);
+    prefs.putInt("idleTimeout",    (int)(c.idleTimeoutMs / 1000));
     prefs.end();
 }
 
@@ -110,6 +113,7 @@ void registerFullRoutes() {
         page.replace("%COMPASS_END%",   String(cfg.compassEnd, 0));
         page.replace("%LETTER_PAUSE%",  String(cfg.letterPauseMs));
         page.replace("%SPACE_PAUSE%",   String(cfg.spacePauseMs));
+        page.replace("%IDLE_TIMEOUT%",  String(cfg.idleTimeoutMs / 1000));
         req->send(200, "text/html", page);
     });
 
@@ -142,7 +146,8 @@ void registerFullRoutes() {
         if (req->hasParam("compassStart", true)) cfg.compassStart  = req->getParam("compassStart", true)->value().toFloat();
         if (req->hasParam("compassEnd",   true)) cfg.compassEnd    = req->getParam("compassEnd",   true)->value().toFloat();
         if (req->hasParam("letterPause",  true)) cfg.letterPauseMs = req->getParam("letterPause",  true)->value().toInt();
-        if (req->hasParam("spacePause",   true)) cfg.spacePauseMs  = req->getParam("spacePause",   true)->value().toInt();
+        if (req->hasParam("spacePause",   true)) cfg.spacePauseMs    = req->getParam("spacePause",   true)->value().toInt();
+        if (req->hasParam("idleTimeout",  true)) cfg.idleTimeoutMs   = (unsigned long)req->getParam("idleTimeout", true)->value().toInt() * 1000UL;
         saveConfig(cfg);
         servoUpdateConfig(cfg);
         req->send_P(200, "text/html", SAVED_HTML);

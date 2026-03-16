@@ -139,6 +139,8 @@ COMMON_STYLE
 "<input type='number' name='letterPause' value='%LETTER_PAUSE%'>"
 "<label>Space pause (ms)</label>"
 "<input type='number' name='spacePause' value='%SPACE_PAUSE%'>"
+"<label>Idle timeout (s)</label>"
+"<input type='number' name='idleTimeout' value='%IDLE_TIMEOUT%'>"
 "<input type='submit' value='Save'>"
 "</form>"
 "<nav>"
