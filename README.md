@@ -39,7 +39,7 @@ You may find my template useful (in French):
 </p>
 
 <details>
-<summary>Click here for spoiler on how it looks inside !</summary>
+<summary>Click here for spoilers on how it looks inside !</summary>
 
 <p align="center">
 <img src="media/ouija_inside.jpeg" alt="Inside" width="50%" height="auto">
@@ -77,7 +77,7 @@ Text matching is fully case-insensitive.
 
 ## How to summon the spirits
 
-The ESP32 hosts a web server. If on awakening the WiFi credentials are not known or not working, then the Access Point mode is started. Connect to this network and visit `http://192.168.4.1` to configure your WiFi.
+The ESP32 hosts a web server. If on awakening the WiFi credentials are not known or not working, then the Access Point mode is started. Connect to this temporary WiFi network "ScarySpookyAP" using password "Skeleton" and visit `http://192.168.4.1` to configure your WiFi.
 
 Once connected:
 
